@@ -11,7 +11,7 @@ jobs:
   deploy:
     name: Deploy Soso Delivery to Hetzner VPS
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -33,10 +33,10 @@ jobs:
           # Créer archive du backend
           cd main-app-v10/admin-panel
           tar -czf /tmp/backend.tar.gz .
-          
+
           # Envoyer au serveur
           scp /tmp/backend.tar.gz root@77.42.34.90:/tmp/
-          
+
           # Extraire sur le serveur
           ssh root@77.42.34.90 << 'ENDSSH'
             cd /var/www/soso-delivery/backend
@@ -49,10 +49,10 @@ jobs:
           # Créer archive du frontend
           cd react-user-website/StackFood\ React
           tar -czf /tmp/frontend.tar.gz .
-          
+
           # Envoyer au serveur
           scp /tmp/frontend.tar.gz root@77.42.34.90:/tmp/
-          
+
           # Extraire sur le serveur
           ssh root@77.42.34.90 << 'ENDSSH'
             cd /var/www/soso-delivery/frontend
@@ -96,7 +96,7 @@ jobs:
             cd /var/www/soso-delivery/frontend
             
             # Install dependencies
-            npm ci --production=false
+            npm install --production=false
             
             # Build Next.js app
             npm run build

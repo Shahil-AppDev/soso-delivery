@@ -74,7 +74,7 @@ jobs:
             # git pull origin main
             
             # Install dependencies
-            npm ci --production=false
+            npm install --production=false
             
             # Build Next.js app
             npm run build
