@@ -76,6 +76,9 @@ jobs:
             # Install dependencies
             npm install --production=false
             
+            # Clean previous build
+            rm -rf .next
+            
             # Build Next.js app
             npm run build
             
