@@ -441,9 +441,21 @@ pm2 status
 **Admin Panel**: https://soso-delivery.xyz/admin  
 **API**: https://soso-delivery.xyz/api/v1  
 
-**Backend Path**: `/var/www/soso-delivery.xyz/backend`  
-**Frontend Path**: `/var/www/soso-delivery.xyz/frontend`  
-**Database**: `stackfood_db`  
+**Backend Path**: `/var/www/soso-delivery/backend` ## 🏗️ Architecture Multi-Projets
+
+**IMPORTANT**: Le serveur Hetzner héberge plusieurs projets. Soso Delivery est un projet isolé.
+
+```
+/var/www/
+├── projet-1/
+├── projet-2/
+└── soso-delivery/          ← NOUVEAU PROJET
+```
+
+**Frontend Path**: `/var/www/soso-delivery/frontend`  
+**Logs Path**: `/var/www/soso-delivery/logs`  
+**Database**: `soso_delivery_db`  
+**DB User**: `soso_delivery_user`  
 
 ---
 

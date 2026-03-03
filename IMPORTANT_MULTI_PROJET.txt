@@ -1,0 +1,87 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                    ⚠️  IMPORTANT - MULTI-PROJETS                ║
+╚══════════════════════════════════════════════════════════════════╝
+
+Le serveur Hetzner (77.42.34.90) héberge PLUSIEURS PROJETS.
+
+STRUCTURE CORRECTE:
+==================
+
+/var/www/
+├── projet-1/
+├── projet-2/
+└── soso-delivery/          ← VOTRE NOUVEAU PROJET
+    ├── backend/            ← Laravel Admin + API
+    ├── frontend/           ← Next.js Customer App
+    └── logs/               ← Logs du projet
+
+❌ INCORRECT: /var/www/soso-delivery.xyz/
+✅ CORRECT:   /var/www/soso-delivery/
+
+CONFIGURATION SPÉCIFIQUE SOSO DELIVERY:
+=======================================
+
+1. CHEMIN PROJET:     /var/www/soso-delivery/
+2. BASE DE DONNÉES:   soso_delivery_db
+3. UTILISATEUR DB:    soso_delivery_user
+4. PORT FRONTEND:     3002 (PM2)
+5. DOMAINE:           soso-delivery.xyz
+6. NGINX CONFIG:      /etc/nginx/sites-available/soso-delivery
+
+FICHIERS MODIFIÉS:
+==================
+
+✅ deploy.sh                 → Chemins corrigés
+✅ quick-deploy.sh           → Chemins corrigés
+✅ nginx-config.conf         → Chemins corrigés
+✅ .github/workflows/deploy.yml → Chemins corrigés
+✅ README.md                 → Documentation mise à jour
+✅ DEPLOYMENT_GUIDE.md       → Guide mis à jour
+✅ DEPLOYMENT_SUMMARY.md     → Résumé mis à jour
+✅ MULTI_PROJECT_SETUP.md    → Nouveau guide multi-projets
+
+PROCHAINES ÉTAPES:
+==================
+
+1. Créer le repo GitHub (PRIVATE)
+2. Pousser le code
+3. Configurer les clés SSH
+4. Exécuter deploy.sh
+5. Le script créera automatiquement /var/www/soso-delivery/
+
+VÉRIFICATION POST-DÉPLOIEMENT:
+==============================
+
+ssh root@77.42.34.90
+
+# Vérifier la structure
+ls -la /var/www/soso-delivery/
+
+# Vérifier PM2
+pm2 list
+# Doit montrer: soso-delivery-frontend (port 3002)
+
+# Vérifier Nginx
+ls -la /etc/nginx/sites-enabled/
+# Doit contenir: soso-delivery
+
+# Vérifier la base de données
+mysql -u root -p
+SHOW DATABASES;
+# Doit montrer: soso_delivery_db
+
+ISOLATION DES PROJETS:
+======================
+
+Chaque projet a:
+- Son propre dossier
+- Sa propre base de données
+- Son propre port PM2
+- Sa propre config Nginx
+- Ses propres logs
+
+Cela permet de gérer plusieurs projets sur le même serveur sans conflit.
+
+═══════════════════════════════════════════════════════════════════
+
+Pour plus de détails, voir: MULTI_PROJECT_SETUP.md

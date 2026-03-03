@@ -169,8 +169,9 @@ chmod 600 ~/.ssh/authorized_keys
 #### Step 1: Create Project Directories
 
 ```bash
-mkdir -p /var/www/soso-delivery.xyz/{backend,frontend}
-cd /var/www/soso-delivery.xyz
+# Create project structure (projet isolé)
+mkdir -p /var/www/soso-delivery/{backend,frontend,logs}
+cd /var/www/soso-delivery
 ```
 
 #### Step 2: Clone Repository
@@ -189,13 +190,13 @@ cp -r temp_repo/react-user-website/StackFood\ React/* frontend/
 rm -rf temp_repo
 
 # Set ownership
-chown -R www-data:www-data /var/www/soso-delivery.xyz
+chown -R www-data:www-data /var/www/soso-delivery
 ```
 
 #### Step 3: Configure Backend (Laravel)
 
 ```bash
-cd /var/www/soso-delivery.xyz/backend
+cd /var/www/soso-delivery/backend
 
 # Copy environment file
 cp .env.example .env
@@ -276,7 +277,7 @@ rm /tmp/database_backup.sql
 #### Step 5: Configure Frontend (Next.js)
 
 ```bash
-cd /var/www/soso-delivery.xyz/frontend
+cd /var/www/soso-delivery/frontend
 
 # Create environment file
 nano .env.local
@@ -369,9 +370,11 @@ ufw status
 
 Before getting SSL, ensure DNS is pointing to your VPS:
 
+**IMPORTANT**: Le serveur héberge plusieurs projets. Soso Delivery sera dans `/var/www/soso-delivery/`
+
 **On Namecheap**:
-1. Log in to Namecheap
-2. Go to **Domain List** → **soso-delivery.xyz** → **Manage**
+1. Login to Namecheap account
+2. Domain List → soso-delivery.xyz → Manage**
 3. **Advanced DNS** tab
 4. Add/Update A Records:
    - Type: `A Record`, Host: `@`, Value: `77.42.34.90`
@@ -425,7 +428,7 @@ pm2 status
 
 # Check logs
 pm2 logs soso-delivery-frontend --lines 50
-tail -f /var/log/nginx/soso-delivery-error.log
+tail -f /var/www/soso-delivery/backend/storage/logs/laravel.log
 ```
 
 #### Step 2: Test Application
@@ -444,7 +447,7 @@ tail -f /var/log/nginx/soso-delivery-error.log
 #### Step 3: Create Admin User (if needed)
 
 ```bash
-cd /var/www/soso-delivery.xyz/backend
+cd /var/www/soso-delivery/backend
 php artisan tinker
 ```
 
@@ -530,7 +533,7 @@ mkdir -p $BACKUP_DIR
 mysqldump -u stackfood_user -p'YOUR_PASSWORD' stackfood_db | gzip > $BACKUP_DIR/db_$DATE.sql.gz
 
 # Files backup
-tar -czf $BACKUP_DIR/files_$DATE.tar.gz /var/www/soso-delivery.xyz/backend/storage/app/public
+tar -czf $BACKUP_DIR/files_$DATE.tar.gz /var/www/soso-delivery/backend/storage/app/public
 
 # Keep only last 7 days
 find $BACKUP_DIR -type f -mtime +7 -delete
@@ -550,7 +553,7 @@ crontab -e
 ```bash
 # Check application logs
 pm2 logs soso-delivery-frontend
-tail -f /var/www/soso-delivery.xyz/backend/storage/logs/laravel.log
+tail -f /var/www/soso-delivery/backend/storage/logs/laravel.log
 
 # Check Nginx logs
 tail -f /var/log/nginx/soso-delivery-access.log
@@ -576,7 +579,7 @@ php artisan view:cache
 systemctl reload php8.1-fpm
 
 # Frontend updates
-cd /var/www/soso-delivery.xyz/frontend
+cd /var/www/soso-delivery/frontend
 git pull origin main
 npm ci
 npm run build
@@ -630,7 +633,7 @@ pm2 logs soso-delivery-frontend
 pm2 restart soso-delivery-frontend
 
 # Rebuild if needed
-cd /var/www/soso-delivery.xyz/frontend
+cd /var/www/soso-delivery/frontend
 npm run build
 pm2 restart soso-delivery-frontend
 ```

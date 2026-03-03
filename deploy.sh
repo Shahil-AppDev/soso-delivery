@@ -17,11 +17,12 @@ NC='\033[0m' # No Color
 # Configuration
 VPS_IP="77.42.34.90"
 DOMAIN="soso-delivery.xyz"
-PROJECT_ROOT="/var/www/${DOMAIN}"
+PROJECT_NAME="soso-delivery"
+PROJECT_ROOT="/var/www/${PROJECT_NAME}"
 BACKEND_DIR="${PROJECT_ROOT}/backend"
 FRONTEND_DIR="${PROJECT_ROOT}/frontend"
-DB_NAME="stackfood_db"
-DB_USER="stackfood_user"
+DB_NAME="soso_delivery_db"
+DB_USER="soso_delivery_user"
 DB_PASS=$(openssl rand -base64 32)
 
 echo -e "${GREEN}╔════════════════════════════════════════════════════════╗${NC}"
@@ -67,9 +68,13 @@ ENDSSH
 # Step 3: Create project directories
 echo -e "\n${YELLOW}[3/10] Creating project directories...${NC}"
 run_remote << ENDSSH
-    mkdir -p ${PROJECT_ROOT}/{backend,frontend}
-    chown -R www-data:www-data ${PROJECT_ROOT}
-    echo "✅ Project directories created"
+    # Create project structure
+    mkdir -p /var/www/${PROJECT_NAME}/{backend,frontend,logs}
+    
+    # Set ownership
+    chown -R www-data:www-data /var/www/${PROJECT_NAME}
+    
+    echo "✅ Project directories created at /var/www/${PROJECT_NAME}"
 ENDSSH
 
 # Step 4: Clone repository to VPS

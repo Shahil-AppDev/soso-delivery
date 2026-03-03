@@ -12,11 +12,14 @@ StackFood is a comprehensive multi-restaurant online food ordering and delivery 
 
 ```
 soso-delivery.xyz
-├── Backend (Laravel) - /var/www/soso-delivery.xyz/backend
+├── Backend (Laravel) - /var/www/soso-delivery/backend
 │   ├── Admin Panel: https://soso-delivery.xyz/admin
 │   └── API: https://soso-delivery.xyz/api/v1
-└── Frontend (Next.js) - /var/www/soso-delivery.xyz/frontend
+└── Frontend (Next.js) - /var/www/soso-delivery/frontend
     └── Customer App: https://soso-delivery.xyz
+
+Note: Le serveur héberge plusieurs projets.
+Soso Delivery est isolé dans /var/www/soso-delivery/
 ```
 
 ## 🛠️ Technology Stack
@@ -105,7 +108,7 @@ EXIT;
 
 #### 4. Backend Deployment
 ```bash
-cd /var/www/soso-delivery.xyz/backend
+cd /var/www/soso-delivery/backend
 
 # Clone repository
 git clone YOUR_REPO_URL .
@@ -129,7 +132,7 @@ chmod -R 775 storage bootstrap/cache
 
 #### 5. Frontend Deployment
 ```bash
-cd /var/www/soso-delivery.xyz/frontend
+cd /var/www/soso-delivery/frontend
 
 # Install dependencies
 npm ci
@@ -156,7 +159,7 @@ certbot --nginx -d soso-delivery.xyz -d www.soso-delivery.xyz
 ## 🔧 Configuration
 
 ### Backend Environment Variables
-Key variables in `/var/www/soso-delivery.xyz/backend/.env`:
+Key variables in `/var/www/soso-delivery/backend/.env`:
 
 ```env
 APP_NAME=StackFood
@@ -189,7 +192,7 @@ AWS_BUCKET=
 ```
 
 ### Frontend Environment Variables
-File: `/var/www/soso-delivery.xyz/frontend/.env.local`:
+File: `/var/www/soso-delivery/frontend/.env.local`:
 
 ```env
 NEXT_PUBLIC_BASE_URL=https://soso-delivery.xyz/api/v1

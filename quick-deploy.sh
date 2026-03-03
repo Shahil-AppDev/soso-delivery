@@ -9,6 +9,7 @@ set -e
 
 VPS_IP="77.42.34.90"
 DOMAIN="soso-delivery.xyz"
+PROJECT_PATH="/var/www/soso-delivery"
 
 echo "🚀 Quick Deploy to ${DOMAIN}"
 echo "================================"
@@ -46,7 +47,7 @@ echo "📦 Deploying application..."
 ssh -i deployment-key root@${VPS_IP} << 'ENDSSH'
     set -e
     
-    cd /var/www/soso-delivery.xyz
+    cd /var/www/soso-delivery
     
     # Pull latest changes
     echo "📥 Pulling latest code..."
@@ -55,7 +56,7 @@ ssh -i deployment-key root@${VPS_IP} << 'ENDSSH'
     
     # Backend deployment
     echo "🔧 Deploying backend..."
-    cd /var/www/soso-delivery.xyz/backend
+    cd /var/www/soso-delivery/backend
     composer install --no-dev --optimize-autoloader --no-interaction
     php artisan migrate --force
     php artisan config:cache
@@ -64,7 +65,7 @@ ssh -i deployment-key root@${VPS_IP} << 'ENDSSH'
     
     # Frontend deployment
     echo "🔧 Deploying frontend..."
-    cd /var/www/soso-delivery.xyz/frontend
+    cd /var/www/soso-delivery/frontend
     npm ci
     npm run build
     pm2 restart soso-delivery-frontend
