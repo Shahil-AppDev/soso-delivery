@@ -36,8 +36,9 @@ jobs:
             # Navigate to backend directory
             cd /var/www/soso-delivery/backend
             
-            # Pull latest changes
-            git pull origin main
+            # Pull latest changes from GitHub
+            # Note: Le code doit être cloné manuellement la première fois
+            # git pull origin main
             
             # Install/Update Composer dependencies
             composer install --no-dev --optimize-autoloader --no-interaction
@@ -68,8 +69,9 @@ jobs:
             # Navigate to frontend directory
             cd /var/www/soso-delivery/frontend
             
-            # Pull latest changes
-            git pull origin main
+            # Pull latest changes from GitHub
+            # Note: Le code doit être cloné manuellement la première fois
+            # git pull origin main
             
             # Install dependencies
             npm ci --production=false
