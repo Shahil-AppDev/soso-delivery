@@ -83,7 +83,7 @@ jobs:
             chmod -R 775 storage bootstrap/cache
             
             # Restart PHP-FPM
-            sudo systemctl reload php8.1-fpm
+            sudo systemctl reload php8.2-fpm
             
             echo "✅ Backend deployment completed"
           ENDSSH
