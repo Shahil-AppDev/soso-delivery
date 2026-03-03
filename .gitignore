@@ -1,0 +1,61 @@
+# Laravel Backend
+/main-app-v10/admin-panel/node_modules
+/main-app-v10/admin-panel/public/hot
+/main-app-v10/admin-panel/public/storage
+/main-app-v10/admin-panel/storage/*.key
+/main-app-v10/admin-panel/vendor
+/main-app-v10/admin-panel/.env
+/main-app-v10/admin-panel/.env.backup
+/main-app-v10/admin-panel/.phpunit.result.cache
+/main-app-v10/admin-panel/Homestead.json
+/main-app-v10/admin-panel/Homestead.yaml
+/main-app-v10/admin-panel/npm-debug.log
+/main-app-v10/admin-panel/yarn-error.log
+/main-app-v10/admin-panel/.idea
+/main-app-v10/admin-panel/.vscode
+/main-app-v10/admin-panel/.DS_Store
+/main-app-v10/admin-panel/composer.phar
+/main-app-v10/admin-panel/.rnd
+
+# Next.js Frontend
+/react-user-website/StackFood React/.next/
+/react-user-website/StackFood React/out/
+/react-user-website/StackFood React/build
+/react-user-website/StackFood React/node_modules
+/react-user-website/StackFood React/.env*.local
+/react-user-website/StackFood React/.env.production
+/react-user-website/StackFood React/.vercel
+/react-user-website/StackFood React/*.tsbuildinfo
+/react-user-website/StackFood React/.DS_Store
+
+# Flutter Apps (not deployed to web server)
+/delivery-man-app-v10/
+/restaurant-app-v10/
+
+# Archives
+*.zip
+*.rar
+*.tar.gz
+
+# System files
+.DS_Store
+Thumbs.db
+__MACOSX/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

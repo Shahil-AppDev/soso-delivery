@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "834616542221",
+    "firebase_url": "https://soso-delivery-b7026-default-rtdb.firebaseio.com",
+    "project_id": "soso-delivery-b7026",
+    "storage_bucket": "soso-delivery-b7026.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834616542221:android:a16fc50d09fe59e5cf8144",
+        "android_client_info": {
+          "package_name": "xyz.sosodelivery.customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMRLWNqBYd2Q7xjMN859d0Vx3negm-0LQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834616542221:android:045ee803b7102982cf8144",
+        "android_client_info": {
+          "package_name": "xyz.sosodelivery.delivery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMRLWNqBYd2Q7xjMN859d0Vx3negm-0LQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834616542221:android:2d26af26b6d62893cf8144",
+        "android_client_info": {
+          "package_name": "xyz.sosodelivery.restaurant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMRLWNqBYd2Q7xjMN859d0Vx3negm-0LQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
